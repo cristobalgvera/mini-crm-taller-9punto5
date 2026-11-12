@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 
 import { ClientsTable } from "@/components/ClientsTable";
 import { DataStatusAlert } from "@/components/DataStatusAlert";
+import { InvoicesTable } from "@/components/InvoicesTable";
 import { QuotesTable } from "@/components/QuotesTable";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -48,11 +49,12 @@ export default function Page() {
           )}
         </Section>
 
-        <Section title="Datos" description="Tablas de clientes y cotizaciones. Cobros, después.">
+        <Section title="Datos" description="Tablas de clientes, cotizaciones y cobros.">
           {result ? (
             <div className="flex flex-col gap-6">
               <ClientsTable clients={result.data.clients} />
               <QuotesTable quotes={result.data.quotes} clients={result.data.clients} />
+              <InvoicesTable invoices={result.data.invoices} clients={result.data.clients} />
             </div>
           ) : (
             isPending && <Skeleton className="h-72 rounded-xl" />
