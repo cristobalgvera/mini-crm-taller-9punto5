@@ -1,13 +1,7 @@
-import { EmptySlot } from "@/components/EmptySlot";
+import { EmbudoCard } from "@/features/embudo/EmbudoCard";
 import type { CrmData } from "@/lib/types";
 
-// Reemplaza el EmptySlot por tu tarjeta de src/features/<widget>/ y pásale `data`.
+// Monta la tarjeta del widget «Embudo de cotizaciones» (hook + tarjeta en src/features/embudo/).
 export function SprintSlot({ data }: { data: CrmData }) {
-  return (
-    <EmptySlot
-      title="Sprint"
-      description="Espacio del sprint: elige una tarjeta."
-      file="SprintSlot.tsx · tarjeta A, B, C o D"
-    />
-  );
+  return <EmbudoCard data={data} />;
 }
