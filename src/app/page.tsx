@@ -2,9 +2,9 @@
 
 import type { ReactNode } from "react";
 
+import { ClientsTable } from "@/components/ClientsTable";
 import { DataStatusAlert } from "@/components/DataStatusAlert";
 import { SiteHeader } from "@/components/SiteHeader";
-import { TablesEmptyState } from "@/components/TablesEmptyState";
 import { Skeleton } from "@/components/ui/skeleton";
 import { PorCobrarSlot } from "@/components/widgets/PorCobrarSlot";
 import { SprintSlot } from "@/components/widgets/SprintSlot";
@@ -47,8 +47,12 @@ export default function Page() {
           )}
         </Section>
 
-        <Section title="Datos" description="El espacio para las tres tablas. Todavía no están.">
-          {isPending ? <Skeleton className="h-72 rounded-xl" /> : <TablesEmptyState />}
+        <Section title="Datos" description="Tabla de clientes. Cotizaciones y cobros, después.">
+          {result ? (
+            <ClientsTable clients={result.data.clients} />
+          ) : (
+            isPending && <Skeleton className="h-72 rounded-xl" />
+          )}
         </Section>
       </main>
     </>
